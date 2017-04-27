@@ -12,5 +12,5 @@ welcome
 <%
 out.print(session.getAttribute("log_user"));
 %>
-</body>
+</body> 
 </html>

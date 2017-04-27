@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>fail</title>
 </head>
-<body bgcolor="red">
+<body bgcolor="red"> 
 
 </body>
 </html>
