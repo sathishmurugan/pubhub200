@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,9 +23,13 @@
 					response.sendRedirect("/books");
 				}
 				
-				
 				%>
-				<div class="portlet-title">
+				 
+				<p>
+				<c:if test="${msg}">
+					<font color="red"><c:out value="${msg}" /></font> <br/>
+				</c:if>
+					</p>			<div class="portlet-title">
 					<div class="page-header">
 						<h3>Login</h3>
 					</div>
@@ -42,7 +47,7 @@
 							<label for="password">Password :</label> <input type="password"
 								class="form-control" name="password"
 								placeholder="Enter Password" required="required" id="password"
-								value="hai" />
+								value="sathish@vels" />
 						</div>
 						<div class="form-group">
 							<button type="submit" name="add" class="btn btn-success"
