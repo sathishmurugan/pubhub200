@@ -1,6 +1,7 @@
 package com.sathish.controller;
 
 import javax.servlet.http.HttpSession;
+
 import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
@@ -12,30 +13,34 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
 import com.sathish.form.LoginForm;
 import com.sathish.form.RegistrationForm;
 import com.sathish.model.User;
-import com.sathish.repository.UserRepository;
+
 import com.sathish.service.UserService;
 
 @Controller
 @RequestMapping("auth")
 public class AuthController {
 	private static final Logger LOGGER = Logger.getLogger(AuthController.class);
-	@Autowired
-	private UserRepository userRepository;
+	
 	@Autowired
 	private UserService userService;
 
 	@PostMapping("/login")
-	public String login(@RequestParam("email") String emailId, @RequestParam("password") String password, HttpSession session, ModelMap modelMap) {
+	public String login(@ModelAttribute @Valid LoginForm logUser, BindingResult result, ModelMap modelMap,
+			HttpSession session) throws Exception  {
 		LOGGER.info("Entering Login");
-		LOGGER.debug(new Object[] { emailId, password });
-			User userObj = userService.findByEmailAndPassword(emailId, password);
-			if (userObj != null) {
-				session.setAttribute("log_user", emailId);
+		LOGGER.debug(new Object[] { logUser.getEmail(), logUser.getPassword()});
+			User userObj = userService.findByEmailAndPassword(logUser.getEmail(), logUser.getPassword());
+			if (result.hasErrors()) {
+				modelMap.addAttribute("errors", result.getAllErrors());
+				modelMap.addAttribute("regFormData", logUser);
+				return "index";
+			}
+			else if (userObj != null) {
+				session.setAttribute("LOGGED_IN_USER", userObj);
+				session.setAttribute("logid", logUser.getEmail());
 				LOGGER.info("login sucess");
 				System.out.println("valid user");
 				return "redirect:../books";

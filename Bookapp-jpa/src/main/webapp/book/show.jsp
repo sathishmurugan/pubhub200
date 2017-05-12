@@ -7,7 +7,7 @@
 </head>
 <body>
 
-	<div><%@ include file="../../layout/header.jsp"%></div>
+	<div><%@ include file="../../layout/header1.jsp"%></div>
 
 	<div class="container-fluid">
 
@@ -42,7 +42,7 @@
 										To Cart</button></td>
 							</c:if>
 							<c:if test="${empty LOGGED_IN_USER}">
-								<td><button type="submit" class="btn btn-primary" disabled>Add
+								<td><button type="submit" class="btn btn-primary" >Add
 										To Cart</button></td>
 							</c:if>
 

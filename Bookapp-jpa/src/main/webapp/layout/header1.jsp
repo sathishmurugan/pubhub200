@@ -52,13 +52,13 @@
             <a class="dropdown-item"  href="../users">All Users</a>
 			<a  class="dropdown-item" href="../orders">All Orders</a>
             </div>
-          </li>
+         </li>
           </c:if>
         </ul>
         
          <ul class="navbar-nav mr-auto pull-right">                  
-         <c:if  test="${!empty LOGGED_IN_USER}">
-         <li class="nav-item"><a class="nav-link"> Welcome ${log_user.name} </a></li>
+         <c:if  test="${LOGGED_IN_USER}">
+         <li class="nav-item"><a class="nav-link"> Welcome ${LOGGED_IN_USER.name} </a></li>
           <li class="nav-item">
             <a class="nav-link" href="../auth/logout">Logout</a>
           </li>
@@ -67,7 +67,7 @@
           
         </ul>
          <c:if  test="${empty LOGGED_IN_USER}">
-         
+          <a href=# class="nav-link">welcome ${logid} </a>
         	 <a  href="../auth/logout" class="btn btn-success">logout</a>
          </c:if>
       </div>

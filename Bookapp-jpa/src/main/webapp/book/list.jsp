@@ -6,7 +6,7 @@
 <title>List Books</title>
 </head>
 <body>
-	<%@ include file="../../layout/header1.jsp"%>
+	<%@ include file="../../layout/header.jsp"%>
 	
 	<div class="container-fluid">
 

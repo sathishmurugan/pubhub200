@@ -24,6 +24,13 @@
 				}
 				
 				%>
+				 				<c:forEach items="${errors}" var="error">
+					<font color="red"><c:out value="${error.defaultMessage}"  /></font> <br/>
+				</c:forEach>
+				
+				<c:if test="${not empty ERROR_MESSAGE}">
+					<font color="red"><c:out value="${ERROR_MESSAGE}" /></font> <br/>
+				</c:if>
 				 
 				<p>
 				<c:if test="${msg}">
@@ -38,16 +45,16 @@
 					<form action="auth/login" method="POST">
 						<div class="form-group">
 							<label for="userName">EmailId :</label> <input type="email"
-								class="form-control" name="email" placeholder="Enter emailId"
-								autofocus="autofocus" required="required" id="emailId"
-								value="ms.sathish.26@gmail.com" />
+								class="form-control" name="email" placeholder="Enter Email Id"
+								autofocus="autofocus" required="required" id="email"
+								value="${regFormData.email.trim()}" />
 						</div>
 
 						<div class="form-group">
 							<label for="password">Password :</label> <input type="password"
 								class="form-control" name="password"
 								placeholder="Enter Password" required="required" id="password"
-								value="sathish@vels" />
+								 />
 						</div>
 						<div class="form-group">
 							<button type="submit" name="add" class="btn btn-success"

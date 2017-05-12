@@ -7,7 +7,9 @@ import javax.servlet.http.HttpSession;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -45,4 +47,13 @@ public class BookController {
 		session.setAttribute("books", books);
 		return "book/list";
 	}
+	@GetMapping("/{id}")
+	public String viewDetials(@PathVariable("id") Long id, HttpSession session,ModelMap modelMap)
+	{
+		Book book=bookService.findOne(id);
+		modelMap.addAttribute("SELECTED_BOOK", book);
+		//session.setAttribute("SELECTED_BOOK", id);
+		return "book/show";
+	}
+	
 }
