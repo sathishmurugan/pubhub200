@@ -40,6 +40,7 @@ public class AuthController {
 			}
 			else if (userObj != null) {
 				session.setAttribute("LOGGED_IN_USER", userObj);
+				session.setAttribute("loguser", userObj.getName());
 				session.setAttribute("logid", logUser.getEmail());
 				LOGGER.info("login sucess");
 				System.out.println("valid user");

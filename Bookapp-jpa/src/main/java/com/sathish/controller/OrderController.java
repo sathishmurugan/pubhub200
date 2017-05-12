@@ -1,6 +1,7 @@
 package com.sathish.controller;
 
 import java.time.LocalDate;
+
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -27,6 +28,18 @@ public class OrderController {
 	@Autowired
 	UserService userService;
 	
+	@GetMapping
+	public String lists(ModelMap modelMap, HttpSession session) {
+
+		List<Order> list = orderService.findAllOrders();
+		System.out.println("orders:"+ list.size());
+		for (Order order : list) {
+			System.out.println(order);
+		}
+		modelMap.addAttribute("ORDERS_LIST", list);
+		return "order/list";
+
+	}
 	@GetMapping("/cart")
 	public String cart() {
 		return "order/cart";

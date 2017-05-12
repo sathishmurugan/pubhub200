@@ -7,7 +7,7 @@
 </head>
 <body>
 
-	<div><%@ include file="../../layout/header1.jsp"%></div>
+	<div><%@ include file="../../layout/header.jsp"%></div>
 
 	<div class="container-fluid">
 

@@ -44,13 +44,15 @@
 										<td>Rs. ${order.totalPrice} </td>
 										<td>${order.status}</td>
 										<td>${order.orderedDate }</td>
-										
-
-										
 										<c:if test="${order.status == 'ORDERED'}">
 											<td><a
 												href="../orders/updateStatus?id=${order.id}&status=CANCELLED"
-												class="btn btn-danger btn-sm">Cancel Order </a></td>
+												class="btn btn-danger">Cancel Order </a></td>
+										</c:if>
+										<c:if test="${order.status == 'ORDERED'}">
+											<td><a
+												href="../orders/updateStatus?id=${order.id}&status=DELIVERED"
+												class="btn btn-success">Delivered Order </a></td>
 										</c:if>
 									</tr>
 
